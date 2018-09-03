@@ -1,0 +1,36 @@
+.section-header {
+    position: relative;
+    display: inline-block;
+
+    &__title-box {
+        background-color: royalblue;
+        padding: 1.4rem 1.8rem;
+        position: relative;
+        transition: all 1s;
+
+        & > * {
+            z-index: 100;
+            position: relative;
+        }
+
+    }
+
+    &:hover {
+        &::before {
+            transform: scaleY(1) skewY(-5deg);
+        }
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -25%;
+        height: 60%;
+        width: 100%;
+        transform: scaleY(0) skewY(-4deg);
+        background: royalblue;
+        transition: transform .3s ease-out;
+    }
+
+}

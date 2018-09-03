@@ -1,0 +1,17 @@
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <figure class="scheme-card">
+        <a href="{{ path('palette', { 'id': color.id }) }}" class="scheme-card__link">
+        <img class="scheme-card__image" src=" {{ absolute_url(color.url) }} " alt="A color scheme">
+        <div class="scheme-card__caption">
+            <div class="scheme-card__caption-row u-margin-bottom-small">
+                <p class="caption caption--detail"> {% if color.views == 1 %} {{ color.views }} View {% else %}
+                    {{ color.views }} Views {% endif %}</p>
+                <p class="caption caption--detail caption caption--detail-light">{{ color.createdAt|date("m/d/Y") }}</p>
+            </div>
+            {% if color.username %}
+                <p class="caption caption--author">by @{{ color.username }}</p>
+            {% endif %}
+        </div>
+        </a>
+    </figure>
+</div>

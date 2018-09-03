@@ -1,0 +1,43 @@
+.scheme-container {
+    display: flex;
+    height: 20rem;
+    width: 100%;
+
+    @include respond(tab-port) {
+        flex-direction: column;
+        height: auto;
+    }
+
+    &__pill {
+        background-color: rgba(#fff, 0.8);
+        padding: 1rem 2rem;
+        margin-bottom: 1rem;
+        border-radius: var(--radius-small);
+        @include respond(tab-port) {
+            margin: 0;
+        }
+    }
+
+    &__color {
+        flex: 0 0 20%;
+        text-align: center;
+        color: var(--color-grey-dark-1);
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        transition: all .2s;
+        box-shadow: var(--shadow-light);
+        position: relative;
+        &:hover {
+            transform: scaleY(1.05);
+        }
+        @include respond(tab-port) {
+            flex-basis: 8rem;
+            align-items: center;
+            &:hover {
+                transform: none;
+            }
+        }
+    }
+}

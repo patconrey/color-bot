@@ -1,0 +1,17 @@
+.section {
+    &:not(:first-child) {
+        padding-top: 2rem;
+    }
+    padding: 8rem 10rem 6rem 10rem;
+
+    @include respond(xs-phone) {
+        padding: 5rem 4rem;
+    }
+}
+
+.container-fluid, 
+.row,
+[class^="col-"] {
+    margin: 0;
+    padding: 0;
+}

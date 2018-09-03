@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Color Palette &mdash; Landing Page{% endblock %}
+
+{% block body %}
+
+<main>
+    <section class="section">
+        <div class="section-header u-margin-bottom-medium">
+            <div class="section-header__title-box">
+                <h1 class="header header--white">Welcome</h1>
+            </div>
+        </div>
+        <p class="section-description u-margin-bottom-small">We're glad you're here! So, what exactly is this? Basically, anybody on Twitter can tweet a picture at the account @colorfulbot. Once we get the picture, we generate a color palette from it. We post the palettes on this site and also provide the palette as Swift and CSS variables.</p>
+        <p class="section-description"> Below you'll find the {{colors|length}} most popular palettes that we've made!</p>
+    </section>
+    <section class="section">
+        <div class="scheme-container">
+            <div class="container-fluid">
+                <div class="row">
+                {% for color in colors %}
+                    {{ include('schemes/_scheme-card-preview.html.twig', { 'color': color }) }}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

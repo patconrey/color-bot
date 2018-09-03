@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Color Palette{% endblock %}
+
+{% block body %}
+
+<main>
+    <section class="section">
+        <div class="section-header u-margin-bottom-medium">
+            <div class="section-header__title-box" id="section-header">
+                <h1 class="header header--white">Awesome Palette #{{ id }}</h1>
+            </div>
+        </div>
+        <p class="section-description u-margin-bottom-small">We love this palette! It was made by {{ username }} and has been viewed {% if views == 1 %} {{views}} time {% else %}
+            {{views}} times. {% endif %}. We've provided the color scheme as CSS properties and Swift variables.</p>
+    </section>
+    <section class="section">
+        <div class="scheme-container">
+            <div class="scheme-container__color" id="c1" onmouseover="hoveredSwatch(this)">
+                <span class="scheme-container__pill">
+                    <h3 class="color">{{ palette.c1 }}</h3>
+                </span>
+            </div>
+            <div class="scheme-container__color" id="c2" onmouseover="hoveredSwatch(this)">
+                <span class="scheme-container__pill">
+                    <h3 class="color">{{ palette.c2 }}</h3>
+                </span>
+            </div>
+            <div class="scheme-container__color" id="c3" onmouseover="hoveredSwatch(this)">
+                <span class="scheme-container__pill">
+                    <h3 class="color">{{ palette.c3 }}</h3>
+                </span>
+            </div>
+            <div class="scheme-container__color" id="c4" onmouseover="hoveredSwatch(this)">
+                <span class="scheme-container__pill">
+                    <h3 class="color">{{ palette.c4 }}</h3>
+                </span>
+            </div>
+            <div class="scheme-container__color" id="c5" onmouseover="hoveredSwatch(this)">
+                <span class="scheme-container__pill">
+                    <h3 class="color">{{ palette.c5 }}</h3>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <h1 class="header header--mono u-margin-bottom-medium" id="code-header">&lt;code/&gt;</h1>
+        <div class="css-container">
+            <pre class="prettyprint">{{ css ~ "\n\n\n" ~ sass ~ "\n\n\n" ~ swift }}</pre>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js"></script>
+
+<script>
+PR.prettyPrint();
+var color_1 = '{{palette.c1}}';
+var color_2 = '{{palette.c2}}';
+var color_3 = '{{palette.c3}}';
+var color_4 = '{{palette.c4}}';
+var color_5 = '{{palette.c5}}';
+
+var c1 = document.getElementById("c1");
+var c2 = document.getElementById("c2");
+var c3 = document.getElementById("c3");
+var c4 = document.getElementById("c4");
+var c5 = document.getElementById("c5");
+var sectionHeader = document.getElementById("section-header");
+var codeHeader = document.getElementById("code-header");
+
+c1.style.backgroundColor = color_1;
+c2.style.backgroundColor = color_2;
+c3.style.backgroundColor = color_3;
+c4.style.backgroundColor = color_4;
+c5.style.backgroundColor = color_5;
+sectionHeader.style.backgroundColor = color_4;
+codeHeader.style.color = color_4;
+
+function hoveredSwatch(e) {
+    var newColor = e.style.backgroundColor;
+    sectionHeader.style.backgroundColor = newColor;
+    codeHeader.style.color = newColor;
+}
+
+</script>
+{% endblock %}
